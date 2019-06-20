@@ -9,6 +9,10 @@
     "start": "ts-node ./server/server.ts",
     "production": "npm run build && npm run start"
   },
+  "engines": {
+    "node": "10.15.0",
+    "npm": "6.9.0"
+  },
   "nodemonConfig": {
     "ignore": [
       "**/*.test.ts",
