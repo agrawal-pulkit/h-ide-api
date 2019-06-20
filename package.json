@@ -7,7 +7,7 @@
     "build": "tsc",
     "dev": "nodemon ./dist/server/server.js",
     "start": "ts-node ./server/server.ts",
-    "prod": "npm run build && npm run start"
+    "prod": "export NODE_ENV=prod && npm run build && npm run start"
   },
   "nodemonConfig": {
     "ignore": [

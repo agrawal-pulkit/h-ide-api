@@ -20,7 +20,7 @@ class ExpressApp {
         if(process.env.NODE_ENV !== 'test') {
             this.enableCrossOrigin();
           }
-        this.enableCrossOrigin();
+        // this.enableCrossOrigin();
     }
 
     private enableCrossOrigin() {
