@@ -1,0 +1,43 @@
+{
+  "name": "ide-api",
+  "version": "1.0.0",
+  "description": "backed for online ide",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon ./dist/server/server.js",
+    "start": "ts-node ./server/server.ts",
+    "prod": "npm run build && npm run start"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "node_modules"
+    ],
+    "watch": [
+      "server"
+    ],
+    "exec": "npm start",
+    "ext": "ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "test"
+  },
+  "author": "Pulkit Agrawal",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.0",
+    "@types/lodash": "^4.14.134",
+    "@types/request": "^2.48.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.11",
+    "request": "^2.88.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
