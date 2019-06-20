@@ -38,10 +38,8 @@ class ExpressApp {
 }
 
 const app = new ExpressApp().app;
-const host = '0.0.0.0';
-const server_port = process.env.PORT || 3000;
-
 app.use(appRoutes); // connecting routes
-app.listen(server_port, () => {
-   console.log(`server running on port ${host}:${port}`);
+app.listen(process.env.PORT || 8080, () => {
+   console.log(`server running on port ${process.env.PORT}`);
 })
+
