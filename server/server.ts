@@ -3,7 +3,7 @@ import * as bodyParser from "body-parser";
 import './config/config.ts';   // include the '.ts' extension
 import { appRoutes } from './routes/app.routes';
 
-const PORT = 3000;
+const PORT = 3001;
 
 class ExpressApp {
 
