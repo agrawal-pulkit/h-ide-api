@@ -3,7 +3,7 @@ import * as bodyParser from "body-parser";
 import './config/config.ts';   // include the '.ts' extension
 import { appRoutes } from './routes/app.routes';
 
-// const PORT = 3001;
+const PORT = 3001;
 
 class ExpressApp {
 
@@ -38,10 +38,10 @@ class ExpressApp {
 }
 
 const app = new ExpressApp().app;
-
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
 
 app.use(appRoutes); // connecting routes
-
-app.listen(process.env.PORT , () => {
-   console.log(`server running on port ${process.env.PORT}`);
+app.listen(port, host, () => {
+   console.log(`server running on port ${host}:${port}`);
 })
