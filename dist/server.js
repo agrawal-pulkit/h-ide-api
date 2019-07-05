@@ -1,32 +1,27 @@
-import * as express from "express";
-import * as bodyParser from "body-parser";
-import './config/config.ts';   // include the '.ts' extension
-import { appRoutes } from './routes/app.routes';
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require("express");
+const bodyParser = require("body-parser");
+require("./config/config.ts"); // include the '.ts' extension
+const app_routes_1 = require("./routes/app.routes");
 const PORT = 3001;
-
 class ExpressApp {
-
-    public app: express.Application;
-
     constructor() {
         this.app = express();
-        this._init();        
+        this._init();
     }
-
-    private _init(): void{
+    _init() {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: false }));
-        if(process.env.NODE_ENV !== 'test') {
+        if (process.env.NODE_ENV !== 'test') {
             this.enableCrossOrigin();
-          }
+        }
         this.enableCrossOrigin();
     }
-
-    private enableCrossOrigin() {
+    enableCrossOrigin() {
         this.app.use((req, res, next) => {
-            const origin = req.headers.origin as string;
-            if(origin && typeof origin === 'string'){
+            const origin = req.headers.origin;
+            if (origin && typeof origin === 'string') {
                 res.setHeader('Access-Control-Allow-Origin', origin);
                 res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
                 res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -36,10 +31,9 @@ class ExpressApp {
         });
     }
 }
-
 const app = new ExpressApp().app;
-app.use(appRoutes); // connecting routes
+app.use(app_routes_1.appRoutes); // connecting routes
 app.listen(process.env.PORT || PORT, () => {
-   console.log(`server running on port ${process.env.PORT}`);
-})
-
+    console.log(`server running on port ${process.env.PORT}`);
+});
+//# sourceMappingURL=server.js.map

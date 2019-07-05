@@ -42,14 +42,14 @@ class AppRoutes {
             .post('/run', (req, res) => {
                 console.log('POST: \'/run\'');
                 console.log(req.body)
-                // return res.status(200).send({
-                //     "runResult": {
-                //         "output": "hello\n",
-                //         "statusCode": 200,
-                //         "memory": "28376",
-                //         "cpuTime": "0.08"
-                //     }
-                // })
+                return res.status(200).send({
+                    "runResult": {
+                        "output": "hello\n",
+                        "statusCode": 200,
+                        "memory": "28376",
+                        "cpuTime": "0.08"
+                    }
+                })
                 const body = _.pick(req.body, ['lang', 'version','program']) as ClientRunRequestBody;  
                 if(!this.validatePostRun(body)) {
                     console.log('invalid body parameters');
@@ -70,6 +70,7 @@ class AppRoutes {
                         })
                         .on('jdoodle-success', (result: JdoodleResponseBody) => {
                             console.log({msg: 'postRunRequest on jdoodle-success', params: result});
+                            
                             return res.status(200).send({runResult: result});
                         })               
                 } catch (error) {
